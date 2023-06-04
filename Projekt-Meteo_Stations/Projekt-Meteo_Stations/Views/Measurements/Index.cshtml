@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Projekt_Meteo_Stations.Models.Measurement>
+
+@{
+    ViewData["Title"] = "Lista pomiarów";
+}
+
+<h1>Lista pomiarów</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Dodaj nowy pomiar</a>
+</p>
+<table class="table table-dark table-hover text-light">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Station)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.MeasurementDate)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Temperature)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Humidity)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pressure)
+            </th>
+            <th class="text-center">Dostępne akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Station.Location)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.MeasurementDate)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Humidity)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Pressure)
+            </td>
+            <td class="text-center">
+                <a asp-action="Details" asp-route-id="@item.MeasurementID"class="btn btn-primary">Szczegóły</a>
+                <a asp-action="Edit" asp-route-id="@item.MeasurementID" class="btn btn-secondary">Edytuj</a>
+                <a asp-action="Delete" asp-route-id="@item.MeasurementID" class="btn btn-danger">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

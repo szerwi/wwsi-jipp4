@@ -1,0 +1,30 @@
+﻿@model Projekt_Meteo_Stations.Models.Station
+
+@{
+    ViewData["Title"] = "Usuwanie stacji meteorologicznej";
+}
+
+<h3>Czy na pewno chcesz usunąć wybraną stację meteorologiczną?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StationStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StationStatus.Status)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="StationID" />
+        <input type="submit" value="USUŃ" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-outline-light">Powrót do listy</a>
+    </form>
+</div>

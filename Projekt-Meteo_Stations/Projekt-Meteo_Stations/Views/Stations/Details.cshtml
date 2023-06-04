@@ -1,0 +1,39 @@
+﻿@model Projekt_Meteo_Stations.Models.Station
+
+@{
+    ViewData["Title"] = "Szczegóły stacji meteorologicznej";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Stacja meteorologiczna</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StationID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StationID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StationStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StationStatus.Status)
+        </dd>
+        <dd class="col-sm-10">
+            <a class="btn btn-info" asp-controller="Measurements" asp-action="IndexForStation" asp-route-id="@Model?.StationID">Pokaż pomiary stacji</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.StationID" class="btn btn-secondary">Edytuj</a>
+    <a asp-action="Index" class="btn btn-outline-light">Powrót do listy</a>
+</div>
